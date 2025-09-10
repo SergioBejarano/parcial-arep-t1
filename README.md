@@ -3,6 +3,9 @@ El atributo conjunto contiene inicalmente:
 ```
 [45.8, 7.5]
 ```
+/stats
+
+<img width="504" height="169" alt="image" src="https://github.com/user-attachments/assets/cf75f23e-9af4-49a7-a4cb-5731fe1d915f" />
 
 
 

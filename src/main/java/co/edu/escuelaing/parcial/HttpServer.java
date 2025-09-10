@@ -4,6 +4,8 @@ import java.net.*;
 import java.io.*;
 import java.lang.Math;
 import java.util.LinkedList;
+
+import java.text.NumberFormat;
 /**
  *
  * @author sergio.bejarano-r
@@ -12,27 +14,31 @@ public class HttpServer {
 
 
     
-    private static LinkedList<Number> conjunto = new LinkedList();
+    private static final LinkedList<Number> conjunto = new LinkedList();
       
     public static void main(String[] args) throws IOException {
         conjunto.add(45.8);
         conjunto.add(7.5);
         ServerSocket serverSocket = null;
+        while (true){
         try {
             serverSocket = new ServerSocket(36000);
         } catch (IOException e) {
             System.err.println("Could not listen on port: 36000.");
             System.exit(1);
         }
-
+        
         Socket clientSocket = null;
+        
+        
         try {
             System.out.println("Listo para recibir ...");
             clientSocket = serverSocket.accept();
         } catch (IOException e) {
             System.err.println("Accept failed.");
             System.exit(1);
-        }
+        }   
+    
         PrintWriter out = new PrintWriter(
                 clientSocket.getOutputStream(), true);
         BufferedReader in = new BufferedReader(
@@ -70,7 +76,7 @@ public class HttpServer {
         
         if (path.startsWith("/add")){            
             String x = path.split("=")[1];
-           
+            //addConjunto(x);
             outputLine = "HTTP/1.1 200 OK\r\n"
                     + "Content-Type: text/html\r\n"
                     + "\r\n"
@@ -99,15 +105,15 @@ public class HttpServer {
         out.println(outputLine);
         out.close();
         in.close();
+        
         clientSocket.close();
         serverSocket.close();
+        }
     }
     
     
-    private static String addConjunto(String x){
-        Long value = new Long(x);
-        conjunto.add(value);
-        return String.valueOf(value);
+    private static void addConjunto(String x){
+        conjunto.add(Integer.parseInt(x));
     }
     
     private static String listConjunto(){

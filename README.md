@@ -1,3 +1,8 @@
+Para probar:
+<img width="624" height="328" alt="image" src="https://github.com/user-attachments/assets/1be5bdde-35af-4f66-b909-60e308be612f" />
+
+
+
 El atributo conjunto contiene inicalmente: 
 
 ```
